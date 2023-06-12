@@ -1,0 +1,268 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>VoxPoser</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+
+    <script src="js/app.js"></script>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
+    <style>
+        .nav-pills {
+          position: relative;
+          display: inline;
+        }
+        .imtip {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        .carousel-control-prev-icon {
+          /* background-color: rgb(210, 210, 210); */
+          filter: invert(60%);
+        }
+        .carousel-control-next-icon {
+          filter: invert(60%);
+        }
+    </style>
+  
+</style>
+
+</head>
+
+<body>
+    <div class="container" id="main">
+      
+        <div class="row">
+            <h1 class="col-md-12 text-center">
+                <b>VoxPoser</b>:
+                Composable 3D Value Maps<br>for Robotic Manipulation with Language Models</br> 
+            </h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                  CoRL 2023 Submission
+                </ul>
+            </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <img src="media/teaser.jpg" alt="teaser" width="70%">
+          </div>
+        </div>
+    
+        <br>
+
+        <div class="row">
+            <div class="col-md-12">
+               
+                <h3>
+                    Abstract
+                </h3>
+                <p class="text-justify">
+Large language models (LLMs) are shown to possess a wealth of actionable knowledge that can be extracted for robot manipulation in the form of reasoning and planning. Despite the progress, most still rely on pre-defined motion primitives to carry out the physical interactions with the environment, which remains a major bottleneck. In this work, we aim to synthesize robot trajectories, i.e., a dense sequence of 6-DoF end-effector waypoints, for a large variety of manipulation tasks given an open-set of instructions and an open-set of objects. We achieve this by first observing that LLMs excel at inferring affordances and constraints given a free-form language instruction. More importantly, by leveraging their code-writing capabilities, they can interact with a visual-language model (VLM) to compose 3D value maps to ground the knowledge into the observation space of the agent. The composed value maps are then used in a model-based planning framework to zero-shot synthesize closed-loop robot trajectories with robustness to dynamic perturbations. We further demonstrate how the proposed framework can benefit from online experiences by efficiently learning a dynamics model for scenes that involve contact-rich interactions. We present a large-scale study of the proposed method in both simulated and real-robot environments, showcasing the ability to perform over 30 everyday manipulation tasks specified in free-form natural language.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+            	<br>
+                <h3>
+                    Method Overview
+                </h3>
+                <p style="text-align:center;"> 
+              <img src="media/method.jpg" alt="method" width="100%" height="100%">
+            </p>
+                <p class="text-justify">
+                VoxPoser extracts language-conditioned <strong>affordances</strong> and <strong>constraints</strong> from LLMs and grounds them to 3D value maps using VLMs, without additional training to either component. The value maps can <strong>zero-shot</strong> synthesize trajectories for large varieties of everyday manipulation tasks with an <strong>open-set of instructions</strong> and an <strong>open-set of objects</strong>.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+              <h3>
+                    Example Rollouts and Interactive Value Maps
+                </h3>
+              <p class="text-justify">
+                <!-- TODO -->
+              </p>
+          </div>
+        </div>
+
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-md-6">
+                  <p style="text-align:center;">
+                    <video width="100%" height="100%" controls autoplay loop muted>
+                      <source src="media/close-drawer.mp4" type="video/mp4">
+                    </video>
+                      "Close the top drawer."
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <iframe data-src="./media/close-drawer.html" width="100%" height="300" frameborder="0"></iframe>
+                  <p style="text-align:center;">
+                    Interactive Value Map
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-6">
+                  <p style="text-align:center;">
+                    <video width="100%" height="100%" controls autoplay loop muted>
+                      <source src="media/get-napkin.mp4" type="video/mp4">
+                    </video>
+                      "Get me a napkin."
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <iframe data-src="./media/get-napkin.html" width="100%" height="300" frameborder="0"></iframe>
+                  <p style="text-align:center;">
+                    Interactive Value Map
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-6">
+                  <p style="text-align:center;">
+                    <video width="100%" height="100%" controls autoplay loop muted>
+                      <source src="media/open-bottle.mp4" type="video/mp4">
+                    </video>
+                      "Open the vitamin bottle on the right."
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <iframe data-src="./media/open-bottle.html" width="100%" height="300" frameborder="0"></iframe>
+                  <p style="text-align:center;">
+                    Interactive Value Map
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-6">
+                  <p style="text-align:center;">
+                    <video width="100%" height="100%" controls autoplay loop muted>
+                      <source src="media/hang-towel.mp4" type="video/mp4">
+                    </video>
+                      "Hang towel on the rack."
+                  </p>
+                </div>
+                <div class="col-md-3">
+                  <iframe data-src="./media/hang-towel-2.html" width="100%" height="300" frameborder="0"></iframe>
+                  <p style="text-align:center;">
+                    Interactive Value Map (1)
+                  </p>
+                </div>
+                <div class="col-md-3">
+                  <iframe data-src="./media/hang-towel-1.html" width="100%" height="300" frameborder="0"></iframe>
+                  <p style="text-align:center;">
+                    Interactive Value Map (2)
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+              <h3>
+                    Execution under Disturbances
+                </h3>
+              <p class="text-justify">
+                <!-- TODO -->
+              </p>
+          </div>
+        </div>
+
+        <div class="row">  
+              <div class="col-md-6">
+              <p style="text-align:center;">
+                <video width="100%" height="100%" controls autoplay loop muted>
+                  <source src="media/close-top-drawer-dist.mp4" type="video/mp4">
+                </video>
+                  "Close the top drawer"
+              </p>
+              </div>
+              <div class="col-md-6">
+                <p style="text-align:center;">
+                <video width="100%" height="100%" controls autoplay loop muted>
+                  <source src="media/sort-trash-in-tray-dist.mp4" type="video/mp4">
+                </video>
+                  "Sort the paper trash into the blue tray"
+                </p>
+              </div>   
+        </div>
+
+        <!-- <div class="row">
+          <div class="col-md-12">
+              <h3>
+                    Prompts
+                </h3>
+              <p class="text-justify">
+                TODO: add links.
+              </p>
+          </div>
+        </div> -->
+
+<script>
+  // Load the iframes when the carousel slides
+  $('#carouselExampleControls').on('slid.bs.carousel', function() {
+    $('.carousel-item.active iframe').each(function() {
+      var currentIframe = $(this);
+      if (!currentIframe.attr('src')) {
+        currentIframe.attr('src', currentIframe.attr('data-src'));
+      }
+    });
+  });
+
+  // Delay the loading of the first iframes until the page has finished loading
+  window.onload = function() {
+    $('.carousel-item.active iframe').each(function() {
+      var currentIframe = $(this);
+      if (!currentIframe.attr('src')) {
+        currentIframe.attr('src', currentIframe.attr('data-src'));
+      }
+    });
+  };
+</script>
+
+</body>
+</html>
