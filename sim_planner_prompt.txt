@@ -1,0 +1,44 @@
+import numpy as np
+from env_utils import execute
+from perception_utils import parse_query_obj
+import action_utils import composer
+
+objects = ['blue block', 'yellow block']
+# Query: place the blue block on the yellow block.
+composer("grasp the blue block")
+composer("back to default pose")
+composer("move to 5cm on top of the yellow block")
+composer("open gripper")
+composer("back to default pose")
+
+objects = ['brown block']
+# Query: pick up the brown block.
+composer("grasp the brown block")
+composer("back to default pose")
+
+objects = ['drawer']
+# Query: open the topmost drawer by the handle.
+composer("grasp the topmost drawer handle")
+composer("move away from the topmost drawer handle by 15cm")
+composer("open gripper")
+composer("back to default pose")
+
+objects = ['pink block', 'blue block', 'yellow block']
+# Query: stack all the blocks.
+# pink block -> blue block
+composer("grasp the pink block")
+composer("back to default pose")
+composer("move to 5cm on top of the blue block")
+composer("open gripper")
+composer("back to default pose")
+# yellow block -> pink block
+composer("grasp the yellow block")
+composer("back to default pose")
+composer("move to 5cm on top of the pink block")
+composer("open gripper")
+composer("back to default pose")
+
+objects = ['pink line', 'yellow block', 'brown block', 'blue block', 'green block', 'brown line']
+# Query: push all the cool-colored blocks to the pink line.
+composer("push the blue block to the pink line")
+composer("push the green block to the pink line")
